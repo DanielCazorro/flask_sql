@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block head_title%}
+{{super()}}: editar movimiento
+{% endblock head_title %}
+
+{% block page_title%}
+<h1>Editar movimiento</h1>
+{% endblock page_title %}
+
+{% block contenido%}
+
+
+
+
+{% if errores %}
+<div class="lista-errores">
+  <p>
+    <i class="fa-solid fa-circle-exclamation fa-2xl"></i>
+  </p>
+  <div class="mensajes-error">
+    {% for error in errores %}
+    <p>{{ error }}</p>
+    {% endfor %}
+
+    <!-- TODO: con el diccionario que devuelve form.errors
+      pintar el error de cada campo debajo del cuadro de texto.
+      A tener en cuenta: letra más pequeña y color rojo
+     -->
+    {{ form.errors }}
+
+  </div>
+</div>
+{% endif %}
+
+<form action="/modificar/{{ id }}" method="POST" novalidate>
+  {{ form.csrf_token }}
+  {{ form.id }}
+
+  <div class="campo-formulario">
+    {{ form.fecha.label }}
+    {{ form.fecha }}
+  </div>
+
+  <div class="campo-formulario">
+    {{ form.concepto.label }}
+    {{ form.concepto() }}
+  </div>
+
+  <div class="campo-formulario">
+    {% for campo in form.tipo %}
+    {{ campo }}
+    {{ campo.label }}
+    {% endfor %}
+  </div>
+
+  <div class="campo-formulario">
+    {{ form.cantidad.label }}
+    {{ form.cantidad }}
+  </div>
+
+  <div class="acciones">
+    {{ form.submit }}
+  </div>
+</form>
+{% endblock contenido %}

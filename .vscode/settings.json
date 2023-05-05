@@ -1,0 +1,8 @@
+{
+  "html.format.indentHandlebars": true,
+  "html.format.wrapLineLength": 100,
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.html-language-features",
+  }
+}

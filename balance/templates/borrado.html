@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block head_title%}
+{{ super() }}: Borrado
+{% endblock head_title %}
+
+{% block page_title%}
+{% if resultado %}
+<h1>El movimiento se ha borrado correctamente</h1>
+{% else %}
+<h1>Error al borrar el movimiento</h1>
+{% endif %}
+{% endblock page_title %}
+
+{% block contenido %}
+<a class="button blue-button" href="/">Volver</a>
+{% endblock contenido %}
