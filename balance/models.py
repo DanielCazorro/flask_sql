@@ -12,9 +12,10 @@ class DBManager:
     """
 
     def __init__(self, ruta):
-        self.ruta = ruta
+        self.ruta = ruta  # Ruta de la base de datos SQLite.
 
     def consultaSQL(self, consulta):
+        # Método para ejecutar una consulta SQL y obtener los resultados.
         # 1. Conectar a la base de datos
         conexion = sqlite3.connect(self.ruta)
 
@@ -49,15 +50,18 @@ class DBManager:
         return self.movimientos
 
     def conectar(self):
+        # Método para establecer una conexión a la base de datos.
         conexion = sqlite3.connect(self.ruta)
         cursor = conexion.cursor()
 
         return conexion, cursor
 
     def desconectar(self, conexion):
+        # Método para cerrar la conexión a la base de datos.
         conexion.close()
 
     def consultaConParametros(self, consulta, params):
+        # Método para ejecutar una consulta con parámetros y manejar las excepciones.
         conexion, cursor = self.conectar()
 
         resultado = False
@@ -73,6 +77,7 @@ class DBManager:
         return resultado
 
     def borrar(self, id):
+        # Método para eliminar un movimiento por su ID de la base de datos.
         consulta = 'DELETE FROM movimientos WHERE id=?'
         conexion = sqlite3.connect(self.ruta)
         cursor = conexion.cursor()
@@ -88,6 +93,7 @@ class DBManager:
         return resultado
 
     def obtenerMovimiento(self, id):
+        # Método para obtener un movimiento por su ID de la base de datos y formatear la fecha.
         """
         Obtiene un movimiento a partir de su ID de la base de datos
         """

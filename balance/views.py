@@ -11,6 +11,7 @@ RUTA = os.path.join('data', 'balance.db')
 
 @app.route('/')
 def home():
+    # Ruta principal que muestra todos los movimientos.
     """
     Muestra una tabla con todos los movimientos.
     """
@@ -22,6 +23,8 @@ def home():
 
 @app.route('/nuevo', methods=['GET', 'POST'])
 def nuevo():
+    # Ruta para agregar un nuevo movimiento, GET muestra el formulario, POST agrega el movimiento a la base de datos.
+
     """
     GET: muestra el formulario vacío
     POST: recoge los datos del formulario,
@@ -38,6 +41,7 @@ def nuevo():
 
 @app.route('/modificar/<int:id>', methods=['GET', 'POST'])
 def actualizar(id):
+    # Ruta para actualizar un movimiento existente.
     """
     Actualiza los datos de un movimiento.
     """
@@ -79,6 +83,7 @@ def actualizar(id):
 
 @app.route('/borrar/<int:id>')
 def eliminar(id):
+    # Ruta para eliminar un movimiento por su ID.
     """
     Elimina un movimiento.
     TODO: En lugar de mostrar otro template, usar un mensaje flash
